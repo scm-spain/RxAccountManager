@@ -1,6 +1,7 @@
 package com.alorma.rxaccounts;
 
 import android.accounts.Account;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,7 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 import com.alorma.androidreactiveaccounts.AccountsObservable;
+import com.alorma.androidreactiveaccounts.AccountsSubscriber;
 import com.alorma.androidreactiveaccounts.RequestPermissionException;
+import com.alorma.androidreactiveaccounts.SimpleAccountsSubscriber;
 import java.util.List;
 import rx.Observable;
 import rx.Subscriber;
@@ -39,19 +42,18 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
 
-        createSubscriber();
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 getAccounts();
             }
         });
     }
 
     private void getAccounts() {
+        createSubscriber();
+
         AccountsObservable.createObservable(this, "com.google").flatMap(new Func1<List<Account>, Observable<Account>>() {
             @Override
             public Observable<Account> call(List<Account> accounts) {
@@ -61,38 +63,52 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createSubscriber() {
-        subscriber = new Subscriber<Account>() {
+
+        subscriber = new SimpleAccountsSubscriber() {
             @Override
             public void onCompleted() {
 
             }
 
             @Override
-            public void onError(final Throwable e) {
-                if (e instanceof RequestPermissionException) {
-                    Snackbar.make(recyclerView, "Missing permission", Snackbar.LENGTH_SHORT)
-                        .setAction("REQUEST", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                String permission = ((RequestPermissionException) e).getPermission();
-                                if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, permission)) {
-                                    Toast.makeText(MainActivity.this, "Permission " + permission + " is needed" , Toast.LENGTH_SHORT).show();
-                                } else {
-                                    ActivityCompat.requestPermissions(MainActivity.this, new String[] { permission },
-                                        REQUEST_PERMISSION);
-                                }
-                            }
-                        })
-                        .show();
-                } else {
-                    Snackbar.make(recyclerView, e.getMessage(), Snackbar.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
             public void onNext(Account account) {
                 adapter.add(account);
             }
+
+            @Override
+            protected void missingPermission(final String permission) {
+                Snackbar.make(recyclerView, "Missing permission", Snackbar.LENGTH_SHORT)
+                    .setAction("REQUEST", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, permission)) {
+                                Toast.makeText(MainActivity.this, "Permission " + permission + " is needed", Toast.LENGTH_SHORT)
+                                    .show();
+                            } else {
+                                ActivityCompat.requestPermissions(MainActivity.this, new String[] { permission },
+                                    REQUEST_PERMISSION);
+                            }
+                        }
+                    })
+                    .show();
+            }
+
+            @Override
+            protected void onAccountsError(Throwable e) {
+                Snackbar.make(recyclerView, e.getMessage(), Snackbar.LENGTH_SHORT).show();
+            }
         };
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == REQUEST_PERMISSION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                getAccounts();
+            }
+        }
     }
 }
