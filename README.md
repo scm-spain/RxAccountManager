@@ -6,7 +6,7 @@ Small library that wraps Account manager API in RxJava Observables reducing boil
 
 Really simple. All you need is to call ```AccountsObservable.createObservable(...);```. All observables are already there.
 
-## OBSERVABLES
+### OBSERVABLES
 ```
 AccountsObservable.createObservable(this);
 ```
@@ -20,7 +20,7 @@ AccountsObservable.createFlatMapObservable(this);
 AccountsObservable.createFlatMapObservable(this, "com.google");
 ```
 
-## SUBSCRIBERS
+### SUBSCRIBERS
 
 ```
 new AccountsSubscriber() {
@@ -68,3 +68,13 @@ new SimpleAccountsSubscriber() {
     }
 });
 ```
+
+## DOWNLOAD
+
+```
+compile 'com.github.alorma:android-reactive-accounts:0.0.1'
+```
+
+## TODO
+
+* Add methods to create / modify / delete account

@@ -1,4 +1,14 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.3.4'
+    }
+}
 
 android {
     compileSdkVersion 23
@@ -19,4 +29,15 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.0.1'
     compile 'io.reactivex:rxjava:1.0.14'
     compile 'com.android.support:support-v4:23.1.0'
+}
+
+publish {
+    userOrg = 'alorma'
+    groupId = 'com.github..alorma'
+    artifactId = 'android-reactive-accounts'
+    version = '0.0.1'
+    description = 'Small library that wraps Account manager API in RxJava Observables reducing boilerplate to minimum.'
+    website = 'https://github.com/alorma/android-reactive-accounts'
+    issueTracker = "${website}/issues"
+    repository = "${website}.git"
 }
