@@ -4,23 +4,67 @@ Small library that wraps Account manager API in RxJava Observables reducing boil
 
 ## API
 
-Really simple. All you need is to call ```AccountsObservable.createObservable(Context context, String accountType);```. All observables are already there.
+Really simple. All you need is to call ```AccountsObservable.createObservable(...);```. All observables are already there.
+
+## OBSERVABLES
+```
+AccountsObservable.createObservable(this);
+```
+```
+AccountsObservable.createObservable(this, "com.google");
+```
+```
+AccountsObservable.createFlatMapObservable(this);
+```
+```
+AccountsObservable.createFlatMapObservable(this, "com.google");
+```
+
+## SUBSCRIBERS
 
 ```
-AccountsObservable.createObservable(this, "com.google").subscribe(new Subscriber<List<Account>>() {
+new AccountsSubscriber() {
     @Override
-    public void onCompleted() {
-
+    protected void missingPermission(String permission) {
+        ...
     }
 
     @Override
-    public void onError(Throwable e) {
+    protected void onAccountsError(Throwable e) {
+        ...
+    }
 
+    @Override
+    public void onCompleted() {
+        ...
     }
 
     @Override
     public void onNext(List<Account> accounts) {
+        ...
+    }
+});
+```
+```
+new SimpleAccountsSubscriber() {
+    @Override
+    protected void missingPermission(String permission) {
+        ...
+    }
 
+    @Override
+    protected void onAccountsError(Throwable e) {
+        ...
+    }
+
+    @Override
+    public void onCompleted() {
+        ...
+    }
+
+    @Override
+    public void onNext(Account account) {
+        ...
     }
 });
 ```
