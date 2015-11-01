@@ -19,12 +19,13 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountH
 
     @Override
     public AccountHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new AccountHolder(LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent,  false));
+        return new AccountHolder(LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_2, parent,  false));
     }
 
     @Override
     public void onBindViewHolder(AccountHolder holder, int position) {
-        holder.text.setText(accounts.get(position).name);
+        holder.accountName.setText(accounts.get(position).name);
+        holder.accountType.setText(accounts.get(position).type);
     }
 
     @Override
@@ -42,12 +43,19 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountH
         notifyDataSetChanged();
     }
 
+    public void clear() {
+        accounts.clear();
+        notifyDataSetChanged();
+    }
+
     public class AccountHolder  extends RecyclerView.ViewHolder{
-        private final TextView text;
+        private final TextView accountName;
+        private final TextView accountType;
 
         public AccountHolder(View itemView) {
             super(itemView);
-            text = (TextView) itemView.findViewById(android.R.id.text1);
+            accountName = (TextView) itemView.findViewById(android.R.id.text1);
+            accountType = (TextView) itemView.findViewById(android.R.id.text2);
         }
     }
 }
