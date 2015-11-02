@@ -1,12 +1,12 @@
-package com.alorma.androidreactiveaccounts;
+package com.alorma.androidreactiveaccounts.subscriber;
 
-import android.accounts.Account;
+import com.alorma.androidreactiveaccounts.RequestPermissionException;
 import rx.Subscriber;
 
 /**
- * Created by bernat.borras on 1/11/15.
+ * Created by bernat.borras on 2/11/15.
  */
-public abstract class SimpleAccountsSubscriber extends Subscriber<Account> {
+public abstract class MissingPermissionSubscriber<T> extends Subscriber<T> {
 
     @Override
     public void onError(Throwable e) {

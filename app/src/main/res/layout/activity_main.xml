@@ -23,14 +23,58 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"
             />
 
-        <android.support.design.widget.TabLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tabLayout"
-            />
-
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="8dp"
+        android:id="@+id/content"
+        >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/all_accounts"
+            android:text="All accounts"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/google_accounts"
+            android:text="Google accounts"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/all_accounts_flat"
+            android:text="All accounts (flat)"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/google_accounts_flat"
+            android:text="Google accounts (flat)"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/account_types"
+            android:text="Account types"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/filter_by_mail"
+            android:text="Filter by email"
+            />
+
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

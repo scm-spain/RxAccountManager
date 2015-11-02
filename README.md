@@ -20,10 +20,10 @@ AccountsObservable.createFlatMapObservable(this);
 AccountsObservable.createFlatMapObservable(this, "com.google");
 ```
 
-### SUBSCRIBERS
+### SUBSCRIBER
 
 ```
-new AccountsSubscriber() {
+new MissingPermissionSubscriber<T>() {
     @Override
     protected void missingPermission(String permission) {
         ...
@@ -40,33 +40,11 @@ new AccountsSubscriber() {
     }
 
     @Override
-    public void onNext(List<Account> accounts) {
+    public void onNext(T t) {
         ...
     }
 });
 ```
-```
-new SimpleAccountsSubscriber() {
-    @Override
-    protected void missingPermission(String permission) {
-        ...
-    }
-
-    @Override
-    protected void onAccountsError(Throwable e) {
-        ...
-    }
-
-    @Override
-    public void onCompleted() {
-        ...
-    }
-
-    @Override
-    public void onNext(Account account) {
-        ...
-    }
-});
 ```
 
 ## DOWNLOAD
