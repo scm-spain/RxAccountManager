@@ -30,6 +30,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_margin="8dp"
+        android:paddingTop="60dp"
         android:id="@+id/content"
         >
 
@@ -45,20 +46,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/google_accounts"
             android:text="Google accounts"
-            />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/all_accounts_flat"
-            android:text="All accounts (flat)"
-            />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/google_accounts_flat"
-            android:text="Google accounts (flat)"
             />
 
         <Button
