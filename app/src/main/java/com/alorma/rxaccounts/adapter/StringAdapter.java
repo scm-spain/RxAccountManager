@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by bernat.borras on 1/11/15.
  */
-public class TypesAdapter extends RecyclerView.Adapter<TypesAdapter.AccountHolder> {
+public class StringAdapter extends RecyclerView.Adapter<StringAdapter.AccountHolder> {
 
     private List<String> types = new ArrayList<>();
 
