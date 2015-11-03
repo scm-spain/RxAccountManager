@@ -1,4 +1,4 @@
-package com.alorma.rxaccounts;
+package com.alorma.rxaccounts.adapter;
 
 import android.accounts.Account;
 import android.support.v7.widget.RecyclerView;
