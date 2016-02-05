@@ -10,7 +10,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
+
+import com.alorma.androidreactiveaccounts.accountmanager.AccountManagerProvider;
 import com.alorma.androidreactiveaccounts.RequestPermissionException;
+import com.alorma.androidreactiveaccounts.accountmanager.AndroidAccountManagerProvider;
+
 import rx.Observable;
 import rx.Subscriber;
 
@@ -100,7 +104,7 @@ public abstract class BaseDemoActivity<T> extends AppCompatActivity {
     }
   }
 
-  public AccountManager getAccountManager() {
-    return AccountManager.get(this);
+  public AccountManagerProvider getAccountManager() {
+    return new AndroidAccountManagerProvider(AccountManager.get(this));
   }
 }

@@ -50,7 +50,7 @@ new MissingPermissionSubscriber<T>() {
 ## DOWNLOAD
 
 ```
-compile 'com.github.alorma:android-reactive-accounts:0.0.1'
+compile 'com.github.alorma:android-reactive-rxAccounts:0.0.1'
 ```
 
 ## TODO

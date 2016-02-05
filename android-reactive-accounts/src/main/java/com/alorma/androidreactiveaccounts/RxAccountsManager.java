@@ -1,49 +1,38 @@
 package com.alorma.androidreactiveaccounts;
 
-import android.Manifest;
-import android.accounts.Account;
-import android.accounts.AccountManager;
-import android.accounts.AuthenticatorDescription;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.support.v4.content.ContextCompat;
-import android.util.Patterns;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import rx.Observable;
-import rx.Subscriber;
-import rx.functions.Func1;
-import rx.functions.Func2;
+import com.alorma.androidreactiveaccounts.accountmanager.AccountManagerProvider;
+import com.alorma.androidreactiveaccounts.accountmanager.RxAccount;
 
-/**
- * Created by bernat.borras on 3/11/15.
- */
+import java.util.List;
+
+import rx.Observable;
+import rx.functions.Func1;
+
 public class RxAccountsManager {
 
-  public static Observable<List<Account>> get(final AccountManager accountManager) {
+  public static Observable<List<RxAccount>> get(final AccountManagerProvider accountManager) {
     return Observable.create(subscriber ->  {
           if (!subscriber.isUnsubscribed()) {
             try {
-              Account[] accounts = accountManager.getAccounts();
-              subscriber.onNext(Arrays.asList(accounts));
+              List<RxAccount> accounts = accountManager.getAccounts();
+              subscriber.onNext(accounts);
               subscriber.onCompleted();
             } catch (Exception e) {
-              subscriber.onError(new RequestPermissionException(Manifest
-                  .permission.GET_ACCOUNTS));
+              subscriber.onError(e);
             }
           }
         }
     );
   }
 
-  public static Observable<List<Account>> emails(AccountManager accountManager) {
+  public static Observable<List<RxAccount>> emails(AccountManagerProvider accountManager) {
     return get(accountManager).flatMap(accounts -> Observable.from(accounts)
-        .filter((Func1<Account, Boolean>) account -> Patterns.EMAIL_ADDRESS
-            .matcher(account.name).matches())).toList();
+        .filter((Func1<RxAccount, Boolean>) account ->
+            accountManager.patternMail().matcher(account.name).matches()))
+        .toList();
   }
 
-  public static Observable<List<String>> emailsText(AccountManager accountManager) {
+  public static Observable<List<String>> emailsText(AccountManagerProvider accountManager) {
     return emails(accountManager).flatMap(accounts -> Observable.from(accounts)
         .map(account -> account.name).distinct().toList());
   }

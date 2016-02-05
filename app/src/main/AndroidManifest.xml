@@ -26,7 +26,7 @@
     <activity
         android:name=".demos.AllAccountsActivity"
         android:parentActivityName=".MainActivity"
-        android:label="All accounts"
+        android:label="All rxAccounts"
         />
 
     <activity
