@@ -1,5 +1,6 @@
 package com.alorma.rxaccounts;
 
+import android.accounts.AccountManager;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -97,5 +98,9 @@ public abstract class BaseDemoActivity<T> extends AppCompatActivity {
         execute();
       }
     }
+  }
+
+  public AccountManager getAccountManager() {
+    return AccountManager.get(this);
   }
 }

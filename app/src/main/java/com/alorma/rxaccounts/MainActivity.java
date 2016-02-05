@@ -3,12 +3,12 @@ package com.alorma.rxaccounts;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import com.alorma.rxaccounts.demos.AccountTypesActivity;
+
 import com.alorma.rxaccounts.demos.AllAccountsActivity;
 import com.alorma.rxaccounts.demos.FilterByMailActivity;
-import com.alorma.rxaccounts.demos.GoogleAccountsActivity;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,16 +27,6 @@ public class MainActivity extends AppCompatActivity {
   @OnClick(R.id.all_accounts)
   public void allAccounts() {
     openIntent(AllAccountsActivity.class);
-  }
-
-  @OnClick(R.id.google_accounts)
-  public void googleAccounts() {
-    openIntent(GoogleAccountsActivity.class);
-  }
-
-  @OnClick(R.id.account_types)
-  public void accountTypes() {
-    openIntent(AccountTypesActivity.class);
   }
 
   @OnClick(R.id.filter_by_mail)
