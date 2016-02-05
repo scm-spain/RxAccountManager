@@ -22,7 +22,7 @@ public class FilterByMailActivity extends BaseDemoActivity<List<String>> {
 
   @Override
   protected Observable<List<String>> getObservable() {
-    return RxAccountsManager.emailsText(this);
+    return RxAccountsManager.emailsText(getAccountManager());
   }
 
   @Override

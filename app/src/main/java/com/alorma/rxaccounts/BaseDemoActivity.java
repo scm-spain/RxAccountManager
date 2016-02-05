@@ -1,5 +1,6 @@
 package com.alorma.rxaccounts;
 
+import android.accounts.AccountManager;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -9,7 +10,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
+
+import com.alorma.androidreactiveaccounts.accountmanager.AccountManagerProvider;
 import com.alorma.androidreactiveaccounts.RequestPermissionException;
+import com.alorma.androidreactiveaccounts.accountmanager.AndroidAccountManagerProvider;
+
 import rx.Observable;
 import rx.Subscriber;
 
@@ -97,5 +102,9 @@ public abstract class BaseDemoActivity<T> extends AppCompatActivity {
         execute();
       }
     }
+  }
+
+  public AccountManagerProvider getAccountManager() {
+    return new AndroidAccountManagerProvider(AccountManager.get(this));
   }
 }

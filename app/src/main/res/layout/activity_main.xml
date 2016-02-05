@@ -12,21 +12,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:id="@+id/all_accounts"
-      android:text="All accounts"
-      />
-
-  <Button
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:id="@+id/google_accounts"
-      android:text="Google accounts"
-      />
-
-  <Button
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:id="@+id/account_types"
-      android:text="Account types"
+      android:text="All rxAccounts"
       />
 
   <Button

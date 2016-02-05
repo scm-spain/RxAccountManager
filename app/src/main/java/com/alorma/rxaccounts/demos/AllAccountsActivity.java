@@ -1,17 +1,17 @@
 package com.alorma.rxaccounts.demos;
 
-import android.accounts.Account;
 import android.support.v7.widget.RecyclerView;
+
 import com.alorma.androidreactiveaccounts.RxAccountsManager;
-import com.alorma.rxaccounts.adapter.AccountAdapter;
+import com.alorma.androidreactiveaccounts.accountmanager.RxAccount;
 import com.alorma.rxaccounts.BaseDemoActivity;
+import com.alorma.rxaccounts.adapter.AccountAdapter;
+
 import java.util.List;
+
 import rx.Observable;
 
-/**
- * Created by bernat.borras on 3/11/15.
- */
-public class AllAccountsActivity extends BaseDemoActivity<List<Account>> {
+public class AllAccountsActivity extends BaseDemoActivity<List<RxAccount>> {
 
   private AccountAdapter adapter;
 
@@ -22,12 +22,12 @@ public class AllAccountsActivity extends BaseDemoActivity<List<Account>> {
   }
 
   @Override
-  protected Observable<List<Account>> getObservable() {
-    return RxAccountsManager.get(this);
+  protected Observable<List<RxAccount>> getObservable() {
+    return RxAccountsManager.get(getAccountManager());
   }
 
   @Override
-  protected void onResult(List<Account> accounts) {
+  protected void onResult(List<RxAccount> accounts) {
     adapter.addAll(accounts);
   }
 }

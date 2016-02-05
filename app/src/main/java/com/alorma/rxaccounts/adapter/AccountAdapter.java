@@ -1,11 +1,13 @@
 package com.alorma.rxaccounts.adapter;
 
-import android.accounts.Account;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.alorma.androidreactiveaccounts.accountmanager.RxAccount;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -15,7 +17,7 @@ import java.util.List;
  */
 public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountHolder> {
 
-    private List<Account> accounts = new ArrayList<>();
+    private List<RxAccount> accounts = new ArrayList<>();
 
     @Override
     public AccountHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -33,12 +35,12 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountH
         return accounts.size();
     }
 
-    public void add(Account account) {
+    public void add(RxAccount account) {
         this.accounts.add(account);
         notifyDataSetChanged();
     }
 
-    public void addAll(Collection<Account> accounts) {
+    public void addAll(Collection<RxAccount> accounts) {
         this.accounts.addAll(accounts);
         notifyDataSetChanged();
     }

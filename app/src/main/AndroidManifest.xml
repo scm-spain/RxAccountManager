@@ -26,19 +26,7 @@
     <activity
         android:name=".demos.AllAccountsActivity"
         android:parentActivityName=".MainActivity"
-        android:label="All accounts"
-        />
-
-    <activity
-        android:name=".demos.GoogleAccountsActivity"
-        android:parentActivityName=".MainActivity"
-        android:label="Google accounts"
-        />
-
-    <activity
-        android:name=".demos.AccountTypesActivity"
-        android:parentActivityName=".MainActivity"
-        android:label="Account types"
+        android:label="All rxAccounts"
         />
 
     <activity
