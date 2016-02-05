@@ -18,6 +18,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 23
+
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
 
     compileOptions {
@@ -30,6 +32,8 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.0.1'
     compile 'io.reactivex:rxjava:1.0.14'
     compile 'com.android.support:support-v4:23.1.1'
+
+    testCompile 'junit:junit:4.12'
 }
 
 publish {
