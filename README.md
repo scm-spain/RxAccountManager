@@ -15,18 +15,18 @@ public AccountManagerProvider getAccountManager() {
 ```
 RxAccountsManager.get(getAccountManager());
 ```
-> List<RxAccount>
+> `List<RxAccount>`
 
 ```
 AccountsObservable.emails(getAccountManager);
 ```
-> List<RxAccount>
+> `List<RxAccount>`
 
 ```
 AccountsObservable.emailsText(getAccountManager);
 ```
 
-> List<String>
+> `List<String>`
 
 ## DOWNLOAD
 
