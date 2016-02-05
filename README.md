@@ -24,36 +24,8 @@ AccountsObservable.emailsText(getAccountManager);
 ```
 > List<String>
 
-
-### SUBSCRIBER
-
-```
-new MissingPermissionSubscriber<T>() {
-    @Override
-    protected void missingPermission(String permission) {
-        ...
-    }
-
-    @Override
-    protected void onAccountsError(Throwable e) {
-        ...
-    }
-
-    @Override
-    public void onCompleted() {
-        ...
-    }
-
-    @Override
-    public void onNext(T t) {
-        ...
-    }
-});
-```
-```
-
 ## DOWNLOAD
 
 ```
-compile 'com.github.alorma:android-reactive-rxAccounts:0.0.2'
+compile 'com.github.alorma:rxaccounts:0.0.3'
 ```

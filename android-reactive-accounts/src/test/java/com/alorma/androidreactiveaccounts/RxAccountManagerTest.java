@@ -1,7 +1,5 @@
 package com.alorma.androidreactiveaccounts;
 
-import android.support.annotation.NonNull;
-
 import com.alorma.androidreactiveaccounts.accountmanager.AccountManagerProvider;
 import com.alorma.androidreactiveaccounts.accountmanager.RxAccount;
 
@@ -17,7 +15,7 @@ import java.util.regex.Pattern;
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.BDDMockito.given;
 
-public class RxRxAccountManagerTest {
+public class RxAccountManagerTest {
 
   @Mock
   AccountManagerProvider accountManagerProvider;
@@ -68,7 +66,6 @@ public class RxRxAccountManagerTest {
     assertEquals(emailsMockData, result);
   }
 
-  @NonNull
   private List<RxAccount> getFakeAccounts() {
     List<RxAccount> expected = new ArrayList<>();
     expected.add(new RxAccount("aaa", "typea"));
