@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/alorma/RxAccountManager.svg?branch=master)](https://travis-ci.org/alorma/RxAccountManager)
+[ ![Download](https://api.bintray.com/packages/alorma/maven/rxaccounts/images/download.svg) ](https://bintray.com/alorma/maven/rxaccounts/_latestVersion)
 
 # RxAccounts
 
@@ -15,13 +16,16 @@ public AccountManagerProvider getAccountManager() {
 RxAccountsManager.get(getAccountManager());
 ```
 > List<RxAccount>
+
 ```
 AccountsObservable.emails(getAccountManager);
 ```
 > List<RxAccount>
+
 ```
 AccountsObservable.emailsText(getAccountManager);
 ```
+
 > List<String>
 
 ## DOWNLOAD
