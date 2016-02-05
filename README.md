@@ -1,24 +1,29 @@
+!https://travis-ci.org/alorma/RxAccountManager.svg?branch=master!:https://travis-ci.org/alorma/RxAccountManager
+
 # RxAccounts
 
 Small library that wraps Account manager API in RxJava Observables reducing boilerplate to minimum.
 
-## API
-
-Really simple. All you need is to call ```AccountsObservable.createObservable(...);```. All observables are already there.
-
 ### OBSERVABLES
 ```
-AccountsObservable.createObservable(this);
+public AccountManagerProvider getAccountManager() {
+    return new AndroidAccountManagerProvider(AccountManager.get(this));
+}
 ```
+
 ```
-AccountsObservable.createObservable(this, "com.google");
+RxAccountsManager.get(getAccountManager());
 ```
+> List<RxAccount>
 ```
-AccountsObservable.createFlatMapObservable(this);
+AccountsObservable.emails(getAccountManager);
 ```
+> List<RxAccount>
 ```
-AccountsObservable.createFlatMapObservable(this, "com.google");
+AccountsObservable.emailsText(getAccountManager);
 ```
+> List<String>
+
 
 ### SUBSCRIBER
 
@@ -50,9 +55,5 @@ new MissingPermissionSubscriber<T>() {
 ## DOWNLOAD
 
 ```
-compile 'com.github.alorma:android-reactive-rxAccounts:0.0.1'
+compile 'com.github.alorma:android-reactive-rxAccounts:0.0.2'
 ```
-
-## TODO
-
-* Add methods to create / modify / delete account

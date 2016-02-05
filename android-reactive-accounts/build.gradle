@@ -39,7 +39,7 @@ publish {
     userOrg = 'alorma'
     groupId = 'com.github..alorma'
     artifactId = 'android-reactive-accounts'
-    version = '0.0.1'
+    version = '0.0.2'
     description = 'Small library that wraps RxAccount manager API in RxJava Observables reducing boilerplate to minimum.'
     website = 'https://github.com/alorma/android-reactive-accounts'
     issueTracker = "${website}/issues"
