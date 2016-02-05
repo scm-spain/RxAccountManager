@@ -1,4 +1,4 @@
-!https://travis-ci.org/alorma/RxAccountManager.svg?branch=master!:https://travis-ci.org/alorma/RxAccountManager
+[![Build Status](https://travis-ci.org/alorma/RxAccountManager.svg?branch=master)](https://travis-ci.org/alorma/RxAccountManager)
 
 # RxAccounts
 
