@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/alorma/RxAccountManager.svg?branch=master)](https://travis-ci.org/alorma/RxAccountManager)
+[![Build Status](https://travis-ci.org/scm-spain/RxAccountManager.svg?branch=master)](https://travis-ci.org/scm-spain/RxAccountManager)
 [ ![Download](https://api.bintray.com/packages/alorma/maven/rxaccounts/images/download.svg) ](https://bintray.com/alorma/maven/rxaccounts/_latestVersion)
 
 # RxAccounts
